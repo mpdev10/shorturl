@@ -11,7 +11,4 @@ interface UrlMappingRepository extends Repository<UrlMapping, String> {
 
     Optional<UrlMapping> findFirstByOriginalUrl(String originalUrl);
 
-    Optional<UrlMapping> findFirstByOriginalUrlIsNull();
-
-
 }

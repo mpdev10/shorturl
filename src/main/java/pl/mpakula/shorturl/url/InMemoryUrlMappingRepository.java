@@ -8,8 +8,6 @@ import java.math.BigInteger;
 import java.util.Map;
 import java.util.Optional;
 
-import static java.util.Objects.isNull;
-
 class InMemoryUrlMappingRepository implements UrlMappingRepository {
 
     Map<BigInteger, UrlMapping> shortenedUrls = Maps.newConcurrentMap();
@@ -32,13 +30,6 @@ class InMemoryUrlMappingRepository implements UrlMappingRepository {
     public Optional<UrlMapping> findFirstByOriginalUrl(String originalUrl) {
         return shortenedUrls.values().stream()
                 .filter(mapping -> mapping.getOriginalUrl().equals(originalUrl))
-                .findFirst();
-    }
-
-    @Override
-    public Optional<UrlMapping> findFirstByOriginalUrlIsNull() {
-        return shortenedUrls.values().stream()
-                .filter(urlMapping -> isNull(urlMapping.getOriginalUrl()))
                 .findFirst();
     }
 }
