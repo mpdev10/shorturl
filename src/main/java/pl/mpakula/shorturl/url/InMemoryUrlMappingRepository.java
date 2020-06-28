@@ -32,4 +32,10 @@ class InMemoryUrlMappingRepository implements UrlMappingRepository {
                 .filter(mapping -> mapping.getOriginalUrl().equals(originalUrl))
                 .findFirst();
     }
+
+    @Override
+    public Optional<UrlMapping> findById(BigInteger id) {
+        return Optional.ofNullable(shortenedUrls.get(id));
+    }
+
 }

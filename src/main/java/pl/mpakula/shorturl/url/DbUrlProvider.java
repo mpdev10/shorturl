@@ -1,8 +1,10 @@
 package pl.mpakula.shorturl.url;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import pl.mpakula.shorturl.url.exception.InvalidUrlException;
 
+import java.math.BigInteger;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -20,6 +22,16 @@ class DbUrlProvider implements UrlProvider {
                         .map(urlMappingRepository::save))
                 .map(this::computeShortenedUrl)
                 .orElseThrow(InvalidUrlException::new);
+    }
+
+    @Override
+    public Optional<String> getOriginalUrl(String shortUrl) {
+        return Optional.ofNullable(shortUrl)
+                .map(url -> url.replace(urlProps.getBasePath(), ""))
+                .filter(StringUtils::isAlphanumeric)
+                .map(url -> new BigInteger(url, 36))
+                .flatMap(urlMappingRepository::findById)
+                .map(UrlMapping::getOriginalUrl);
     }
 
 

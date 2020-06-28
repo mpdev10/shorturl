@@ -24,6 +24,13 @@ class UrlFacadeImpl implements UrlFacade {
                 .orElseThrow(InvalidUrlException::new);
     }
 
+    @Override
+    public Optional<String> getOriginalUrl(String shortUrl) {
+        return Optional.ofNullable(shortUrl)
+                .map(this::addPrefixIfNotPresent)
+                .flatMap(urlProvider::getOriginalUrl);
+    }
+
     private String addPrefixIfNotPresent(String url) {
         return Optional.ofNullable(url)
                 .filter(u -> !u.contains("://"))

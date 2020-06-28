@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import pl.mpakula.shorturl.url.exception.InvalidUrlException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UrlFacadeTest {
@@ -49,4 +50,21 @@ class UrlFacadeTest {
         String url2 = facade.shortenUrl(VALID_URL2);
         assertThat(url).isNotEqualTo(url2);
     }
+
+    @Test
+    void getOriginalUrl_givenNullInvalidOrNotExistingOriginalUrl_originalUrlIsEmpty() {
+        assertAll(
+                () -> assertThat(configuration.urlFacade().getOriginalUrl(null)).isEmpty(),
+                () -> assertThat(configuration.urlFacade().getOriginalUrl(INVALID_URL)).isEmpty(),
+                () -> assertThat(configuration.urlFacade().getOriginalUrl(VALID_URL)).isEmpty()
+        );
+    }
+
+    @Test
+    void getOriginalUrl_givenValidUrl_originalUrlIsPresentAndValid() {
+        UrlFacade facade = configuration.urlFacade();
+        String shortUrl = facade.shortenUrl(VALID_URL);
+        assertThat(facade.getOriginalUrl(shortUrl)).contains(VALID_URL);
+    }
+
 }
