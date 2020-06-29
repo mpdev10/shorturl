@@ -21,5 +21,4 @@ class UrlMapping {
     @Column(unique = true)
     private final String originalUrl;
 
-
 }
