@@ -2,10 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Url cutter</title>
+    <title th:text="${@environment.getProperty('spring.application.name')}"></title>
+    <link th:href="@{/styles/styles.css}" rel="stylesheet">
 </head>
 <body>
-<h2>Your short url:</h2>
-<span th:text="${shortUrl}"></span>
+<div class="content">
+    <h1>Your short url:</h1>
+    <span th:text="${shortUrl}"></span>
+</div>
 </body>
 </html>

@@ -2,13 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Url cutter</title>
+    <title th:text="${@environment.getProperty('spring.application.name')}"></title>
+    <link th:href="@{/styles/styles.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Make your url shorter!</h1>
-<form method="post" th:action="@{/short}">
-    <input name="url" type="text"/>
-    <button type="submit">Send</button>
-</form>
+<div class="content">
+    <h1 class="title">MAKE YOUR URL SHORTER</h1>
+    <form method="post" th:action="@{/short}">
+        <div class="urlbar">
+            <input name="url" type="text"/>
+            <button type="submit">Shorten</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>
