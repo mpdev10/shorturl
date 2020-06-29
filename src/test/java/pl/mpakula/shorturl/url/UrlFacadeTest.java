@@ -2,6 +2,7 @@ package pl.mpakula.shorturl.url;
 
 import org.junit.jupiter.api.Test;
 import pl.mpakula.shorturl.url.exception.InvalidUrlException;
+import pl.mpakula.shorturl.url.exception.OriginalUrlNotFoundException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -13,6 +14,7 @@ class UrlFacadeTest {
     private static final String VALID_NO_PREFIX_URL = "mpakula.pl";
     private static final String VALID_URL = "http://mpakula.pl";
     private static final String VALID_URL2 = "google.pl";
+    private static final String INEXISTANT_URL = "123";
     private static final UrlConfiguration configuration = new UrlConfiguration();
 
     @Test
@@ -52,11 +54,14 @@ class UrlFacadeTest {
     }
 
     @Test
-    void getOriginalUrl_givenNullInvalidOrNotExistingOriginalUrl_originalUrlIsEmpty() {
+    void getOriginalUrl_givenNullInvalidOrNotExistingOriginalUrl_throwsOriginalUrlNotFoundException() {
         assertAll(
-                () -> assertThat(configuration.urlFacade().getOriginalUrl(null)).isEmpty(),
-                () -> assertThat(configuration.urlFacade().getOriginalUrl(INVALID_URL)).isEmpty(),
-                () -> assertThat(configuration.urlFacade().getOriginalUrl(VALID_URL)).isEmpty()
+                () -> assertThrows(OriginalUrlNotFoundException.class,
+                        () -> configuration.urlFacade().getOriginalUrl(null)),
+                () -> assertThrows(OriginalUrlNotFoundException.class,
+                        () -> configuration.urlFacade().getOriginalUrl(INVALID_URL)),
+                () -> assertThrows(OriginalUrlNotFoundException.class,
+                        () -> configuration.urlFacade().getOriginalUrl(INEXISTANT_URL))
         );
     }
 

@@ -2,6 +2,7 @@ package pl.mpakula.shorturl.url;
 
 import org.apache.commons.validator.routines.UrlValidator;
 import pl.mpakula.shorturl.url.exception.InvalidUrlException;
+import pl.mpakula.shorturl.url.exception.OriginalUrlNotFoundException;
 
 import java.util.Optional;
 
@@ -25,10 +26,10 @@ class UrlFacadeImpl implements UrlFacade {
     }
 
     @Override
-    public Optional<String> getOriginalUrl(String shortUrl) {
+    public String getOriginalUrl(String shortUrl) {
         return Optional.ofNullable(shortUrl)
-                .map(this::addPrefixIfNotPresent)
-                .flatMap(urlProvider::getOriginalUrl);
+                .flatMap(urlProvider::getOriginalUrl)
+                .orElseThrow(OriginalUrlNotFoundException::new);
     }
 
     private String addPrefixIfNotPresent(String url) {
