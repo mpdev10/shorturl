@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Url cutter</title>
+</head>
+<body>
+<h1>Make your url shorter!</h1>
+<form method="post" th:action="@{/short}">
+    <input name="url" type="text"/>
+    <button type="submit">Send</button>
+</form>
+</body>
+</html>
