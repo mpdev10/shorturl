@@ -6,7 +6,8 @@ plugins {
 
 group = 'pl.mpakula'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = JavaVersion.VERSION_14
+targetCompatibility = JavaVersion.VERSION_14
 
 configurations {
     compileOnly {
