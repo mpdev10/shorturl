@@ -51,6 +51,9 @@ body {
 }
 
 .urlbar input {
+    -webkit-box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.55);
+    -moz-box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.55);
+    box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.55);
     margin-right: 15px;
     width: 960px;
     color: var(--color2);
