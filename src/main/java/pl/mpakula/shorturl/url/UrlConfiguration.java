@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 class UrlConfiguration {
 
     UrlFacade urlFacade() {
-        UrlProvider provider = new DbUrlProvider(new UrlProps("mock://test.c/"), new InMemoryUrlMappingRepository());
+        UrlProvider provider = new DbUrlProvider(new UrlProps("http://127.0.0.1:8080/"), new InMemoryUrlMappingRepository());
         return new UrlFacadeImpl(new UrlValidator(), provider);
     }
 
