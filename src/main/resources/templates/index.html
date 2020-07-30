@@ -7,10 +7,14 @@
 </head>
 <body>
 <div class="content">
-    <h1 class="title">MAKE YOUR URL SHORTER</h1>
+    <h1 class="title">
+        <label for="url">
+            MAKE YOUR URL SHORTER
+        </label>
+    </h1>
     <form method="post" th:action="@{/short}">
-        <div class="urlbar">
-            <input name="url" type="text"/>
+        <div class="urlBar">
+            <input id="url" name="url" type="text"/>
             <button type="submit">Shorten</button>
         </div>
     </form>

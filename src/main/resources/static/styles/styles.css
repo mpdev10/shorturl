@@ -19,10 +19,14 @@ body {
     background-color: var(--color3);
 }
 
-.title {
+h1 {
     font-family: 'Alfa Slab One', Courier, monospace;
-    font-size: 80px;
     font-weight: lighter;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: 80px;
 }
 
 .content {
@@ -42,15 +46,15 @@ body {
 }
 
 
-.urlbar {
-    height: inherit;
+.urlBar {
+    height: 3.8vh;
     display: flex;
     justify-content: center;
     background-color: var(--color2);
     padding: 15px;
 }
 
-.urlbar input {
+.urlBar input {
     -webkit-box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.55);
     -moz-box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.55);
     box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.55);
@@ -60,7 +64,7 @@ body {
     font-weight: bold;
 }
 
-.urlbar button {
+.urlBar button {
     border: none;
     border-radius: 5%;
     padding: 10px;
@@ -68,4 +72,47 @@ body {
     background-color: var(--color5);
     color: var(--color2);
     font-family: Helvetica, sans-serif;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip > button {
+    height: 100%;
+}
+
+.tooltip .tooltipText {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    font-size: smaller;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltipText::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
 }
