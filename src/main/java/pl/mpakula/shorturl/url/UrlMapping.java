@@ -15,7 +15,6 @@ class UrlMapping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
     private BigInteger id;
 
     @Column(unique = true)
