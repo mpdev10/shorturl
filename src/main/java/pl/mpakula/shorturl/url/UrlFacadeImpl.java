@@ -19,7 +19,7 @@ class UrlFacadeImpl implements UrlFacade {
     @Override
     public String shortenUrl(String url) {
         return Optional.ofNullable(url)
-                .map(this::addPrefixIfNotPresent)
+                .map(this::addSchemaIfNotPresent)
                 .filter(urlValidator::isValid)
                 .map(urlProvider::provideShortenedUrl)
                 .orElseThrow(InvalidUrlException::new);
@@ -32,10 +32,10 @@ class UrlFacadeImpl implements UrlFacade {
                 .orElseThrow(OriginalUrlNotFoundException::new);
     }
 
-    private String addPrefixIfNotPresent(String url) {
+    private String addSchemaIfNotPresent(String url) {
         return Optional.ofNullable(url)
                 .filter(u -> !u.contains("://"))
-                .map("http://"::concat)
+                .map("https://"::concat)
                 .orElse(url);
     }
 
