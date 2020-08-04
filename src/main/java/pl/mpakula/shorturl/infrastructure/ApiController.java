@@ -1,5 +1,6 @@
 package pl.mpakula.shorturl.infrastructure;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +11,10 @@ import org.springframework.web.servlet.view.RedirectView;
 import pl.mpakula.shorturl.url.UrlFacade;
 
 @Controller
+@RequiredArgsConstructor
 class ApiController {
 
     private final UrlFacade urlFacade;
-
-    ApiController(UrlFacade urlFacade) {
-        this.urlFacade = urlFacade;
-    }
 
     @PostMapping("/short")
     public String shortenUrl(Model model, @RequestParam String url) {
@@ -28,5 +26,6 @@ class ApiController {
     public RedirectView redirectUrl(@PathVariable("shortUrl") String shortUrl) {
         return new RedirectView(urlFacade.getOriginalUrl(shortUrl), false);
     }
+
 
 }

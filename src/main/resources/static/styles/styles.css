@@ -25,6 +25,19 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0.5%;
 }
 
+a {
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: black;
+}
+
+a:hover, a:active {
+    color: var(--color1);
+}
+
 .title {
     font-size: 80px;
     text-transform: uppercase;
@@ -60,9 +73,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .urlBar button {
+    height: inherit;
     border: none;
     border-radius: 0;
-    padding: 15px 25px 15px 25px;
+    padding: 0 25px 0 25px;
     text-align: center;
     font-weight: bolder;
     background-color: var(--color5);
