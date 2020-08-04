@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Alfa Slab One');
 
 :root {
-    --color1: #05386B;
-    --color2: #379683;
-    --color3: #5CDB95;
-    --color4: #8EE4AF;
-    --color5: #EDF5E1;
+    --color1: #353535;
+    --color2: #EFF1F3;
+    --color3: #DBD3D8;
+    --color4: #D8B4A0;
+    --color5: #D77A61;
 }
 
 html {
@@ -19,14 +19,15 @@ body {
     background-color: var(--color3);
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Alfa Slab One', Courier, monospace;
     font-weight: lighter;
-    text-transform: uppercase;
+    margin: 0.5%;
 }
 
 .title {
     font-size: 80px;
+    text-transform: uppercase;
 }
 
 .content {
@@ -36,42 +37,42 @@ h1 {
     display: flex;
     text-align: center;
     flex-direction: column;
-    color: var(--color5);
+    color: var(--color1);
     font-family: Helvetica, sans-serif;
     font-weight: bold;
 }
 
-.content form {
-    height: 20%;
-}
-
-
 .urlBar {
+    margin: 0 auto;
+    width: 50%;
     height: 3.8vh;
     display: flex;
     justify-content: center;
-    background-color: var(--color2);
-    padding: 15px;
 }
 
 .urlBar input {
-    -webkit-box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.55);
-    -moz-box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.55);
-    box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.55);
-    margin-right: 15px;
-    width: 960px;
-    color: var(--color2);
-    font-weight: bold;
+    width: 100%;
+    padding: 0 1% 0 1%;
+    border: none;
+    margin-right: 0;
+    border-radius: 0;
+    font-weight: lighter;
 }
 
 .urlBar button {
     border: none;
-    border-radius: 5%;
-    padding: 10px;
-    font-weight: bold;
+    border-radius: 0;
+    padding: 15px 25px 15px 25px;
+    text-align: center;
+    font-weight: bolder;
     background-color: var(--color5);
     color: var(--color2);
     font-family: Helvetica, sans-serif;
+    transition: 0.2s;
+}
+
+.urlBar button:hover {
+    box-shadow: inset 0 0 0 10em rgba(0, 0, 0, 0.1);
 }
 
 .tooltip {
