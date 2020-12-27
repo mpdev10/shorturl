@@ -1,8 +1,8 @@
-package pl.mpakula.shorturl.url;
+package pl.mpakula.shorturl.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import pl.mpakula.shorturl.url.exception.InvalidUrlException;
+import pl.mpakula.shorturl.domain.exception.InvalidUrlException;
 
 import java.math.BigInteger;
 import java.util.Optional;

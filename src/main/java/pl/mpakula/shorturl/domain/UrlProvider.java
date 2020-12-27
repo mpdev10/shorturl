@@ -1,4 +1,4 @@
-package pl.mpakula.shorturl.url;
+package pl.mpakula.shorturl.domain;
 
 import lombok.NonNull;
 

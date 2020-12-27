@@ -1,4 +1,4 @@
-package pl.mpakula.shorturl.url;
+package pl.mpakula.shorturl.domain;
 
 import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;

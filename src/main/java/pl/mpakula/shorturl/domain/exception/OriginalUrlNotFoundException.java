@@ -1,4 +1,4 @@
-package pl.mpakula.shorturl.url.exception;
+package pl.mpakula.shorturl.domain.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
