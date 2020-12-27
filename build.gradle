@@ -1,52 +1,35 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'java'
 }
 
-group = 'pl.mpakula'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = JavaVersion.VERSION_14
-targetCompatibility = JavaVersion.VERSION_14
+allprojects {
+    apply plugin: 'java'
+    sourceCompatibility = JavaVersion.VERSION_14
+    targetCompatibility = JavaVersion.VERSION_14
+}
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
+subprojects {
+    group = 'pl.mpakula'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
     }
-}
 
-repositories {
-    mavenCentral()
-    maven { url 'https://repo.spring.io/milestone' }
-    maven { url 'https://repo.spring.io/snapshot' }
-}
+    apply plugin: 'io.spring.dependency-management'
 
-ext {
-    apacheCommonsVersion = '1.8'
-    commonsValidatorVersion = '1.6'
-    guavaVersion = '29.0-jre'
-    assertjVersion = '3.16.1'
-}
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.boot:spring-boot-dependencies:2.4.0'
+        }
+        dependencies {
+            dependency group: 'org.apache.commons', name: 'commons-text', version: '1.8'
+            dependency group: 'commons-validator', name: 'commons-validator', version: '1.6'
+            dependency group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+            dependency group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
+        }
+    }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation group: 'org.apache.commons', name: 'commons-text', version: apacheCommonsVersion
-    implementation group: 'commons-validator', name: 'commons-validator', version: commonsValidatorVersion
-    implementation group: 'com.google.guava', name: 'guava', version: guavaVersion
-
-    compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'org.postgresql:postgresql'
-    runtimeOnly 'com.h2database:h2'
-
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: assertjVersion
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
-test {
-    useJUnitPlatform()
 }
