@@ -21,14 +21,21 @@ repositories {
     maven { url 'https://repo.spring.io/snapshot' }
 }
 
+ext {
+    apacheCommonsVersion = '1.8'
+    commonsValidatorVersion = '1.6'
+    guavaVersion = '29.0-jre'
+    assertjVersion = '3.16.1'
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.8'
-    implementation group: 'commons-validator', name: 'commons-validator', version: '1.6'
-    implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+    implementation group: 'org.apache.commons', name: 'commons-text', version: apacheCommonsVersion
+    implementation group: 'commons-validator', name: 'commons-validator', version: commonsValidatorVersion
+    implementation group: 'com.google.guava', name: 'guava', version: guavaVersion
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
@@ -36,7 +43,7 @@ dependencies {
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: assertjVersion
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
