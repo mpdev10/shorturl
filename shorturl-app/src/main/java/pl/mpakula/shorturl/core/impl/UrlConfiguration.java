@@ -12,18 +12,12 @@ import pl.mpakula.shorturl.core.ports.outgoing.UrlMappingRepository;
 class UrlConfiguration {
 
     UrlFacade urlFacade() {
-        UrlProvider provider = new DbUrlProvider(new UrlProps("http://127.0.0.1:8080/"), new InMemoryUrlMappingRepository());
-        return new UrlFacadeImpl(new UrlValidator(), provider);
+        return new UrlFacadeImpl(UrlValidator.getInstance(), new UrlProps("http://127.0.0.1:8080/"), new InMemoryUrlMappingRepository());
     }
 
     @Bean
-    UrlProvider urlProvider(UrlProps urlProps, UrlMappingRepository urlMappingRepository) {
-        return new DbUrlProvider(urlProps, urlMappingRepository);
-    }
-
-    @Bean
-    UrlFacade urlFacade(UrlProvider urlProvider) {
-        return new UrlFacadeImpl(UrlValidator.getInstance(), urlProvider);
+    UrlFacade urlFacade(UrlProps urlProps, UrlMappingRepository urlMappingRepository) {
+        return new UrlFacadeImpl(UrlValidator.getInstance(), urlProps, urlMappingRepository);
     }
 
 }
