@@ -3,6 +3,7 @@ package pl.mpakula.shorturl.core;
 
 import com.google.common.collect.Maps;
 import lombok.NonNull;
+import org.jetbrains.annotations.NotNull;
 import pl.mpakula.shorturl.core.model.UrlMapping;
 import pl.mpakula.shorturl.core.ports.outgoing.UrlMappingRepository;
 
@@ -14,6 +15,7 @@ class InMemoryUrlMappingRepository implements UrlMappingRepository {
 
     Map<BigInteger, UrlMapping> shortenedUrls = Maps.newConcurrentMap();
 
+    @NotNull
     @Override
     public UrlMapping save(@NonNull UrlMapping urlMapping) {
         BigInteger id = Optional.ofNullable(urlMapping.getId())
@@ -28,6 +30,7 @@ class InMemoryUrlMappingRepository implements UrlMappingRepository {
         return savedMapping;
     }
 
+    @NotNull
     @Override
     public Optional<UrlMapping> findFirstByOriginalUrl(String originalUrl) {
         return shortenedUrls.values().stream()
@@ -35,6 +38,7 @@ class InMemoryUrlMappingRepository implements UrlMappingRepository {
                 .findFirst();
     }
 
+    @NotNull
     @Override
     public Optional<UrlMapping> findById(BigInteger id) {
         return Optional.ofNullable(shortenedUrls.get(id));

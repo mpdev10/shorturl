@@ -1,7 +1,7 @@
 package pl.mpakula.shorturl.infrastructure;
 
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Repository;
 import pl.mpakula.shorturl.core.model.UrlMapping;
@@ -17,8 +17,9 @@ class UrlMappingRepositoryAdapter implements UrlMappingRepository {
 
     private final UrlMappingJpaRepository repository;
 
+    @NotNull
     @Override
-    public UrlMapping save(@NonNull UrlMapping urlMapping) {
+    public UrlMapping save(@NotNull UrlMapping urlMapping) {
         return Optional.of(urlMapping)
                 .map(UrlMappingRepositoryAdapter::toJpa)
                 .map(repository::save)
@@ -26,12 +27,14 @@ class UrlMappingRepositoryAdapter implements UrlMappingRepository {
                 .orElseThrow();
     }
 
+    @NotNull
     @Override
     public Optional<UrlMapping> findFirstByOriginalUrl(String originalUrl) {
         return repository.findFirstByOriginalUrl(originalUrl)
                 .map(UrlMappingRepositoryAdapter::toDomain);
     }
 
+    @NotNull
     @Override
     public Optional<UrlMapping> findById(BigInteger id) {
         return repository.findById(id)
