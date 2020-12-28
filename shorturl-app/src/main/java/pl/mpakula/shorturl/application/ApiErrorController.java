@@ -1,4 +1,4 @@
-package pl.mpakula.shorturl.infrastructure;
+package pl.mpakula.shorturl.application;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.servlet.error.ErrorController;
