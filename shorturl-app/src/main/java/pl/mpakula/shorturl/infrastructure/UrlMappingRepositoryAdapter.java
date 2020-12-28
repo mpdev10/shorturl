@@ -1,8 +1,10 @@
-package pl.mpakula.shorturl.core;
+package pl.mpakula.shorturl.infrastructure;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import pl.mpakula.shorturl.core.UrlMapping;
+import pl.mpakula.shorturl.core.UrlMappingRepository;
 
 import java.math.BigInteger;
 import java.util.Optional;

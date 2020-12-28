@@ -7,8 +7,7 @@ import java.math.BigInteger;
 
 @RequiredArgsConstructor
 @Getter
-class UrlMapping {
-
+public class UrlMapping {
 
     private final BigInteger id;
 

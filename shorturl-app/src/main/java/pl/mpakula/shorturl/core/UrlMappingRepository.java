@@ -5,7 +5,7 @@ import lombok.NonNull;
 import java.math.BigInteger;
 import java.util.Optional;
 
-interface UrlMappingRepository {
+public interface UrlMappingRepository {
 
     UrlMapping save(@NonNull UrlMapping urlMapping);
 
