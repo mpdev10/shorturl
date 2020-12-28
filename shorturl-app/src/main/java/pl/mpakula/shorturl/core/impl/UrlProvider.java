@@ -1,4 +1,4 @@
-package pl.mpakula.shorturl.core;
+package pl.mpakula.shorturl.core.impl;
 
 import lombok.NonNull;
 

@@ -1,8 +1,10 @@
-package pl.mpakula.shorturl.core;
+package pl.mpakula.shorturl.core.impl;
 
 
 import com.google.common.collect.Maps;
 import lombok.NonNull;
+import pl.mpakula.shorturl.core.model.UrlMapping;
+import pl.mpakula.shorturl.core.ports.outgoing.UrlMappingRepository;
 
 import java.math.BigInteger;
 import java.util.Map;

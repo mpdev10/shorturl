@@ -1,6 +1,7 @@
-package pl.mpakula.shorturl.core;
+package pl.mpakula.shorturl.core.impl;
 
 import org.apache.commons.validator.routines.UrlValidator;
+import pl.mpakula.shorturl.core.UrlFacade;
 import pl.mpakula.shorturl.core.exception.InvalidUrlException;
 import pl.mpakula.shorturl.core.exception.OriginalUrlNotFoundException;
 

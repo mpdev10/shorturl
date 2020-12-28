@@ -1,8 +1,9 @@
-package pl.mpakula.shorturl.core;
+package pl.mpakula.shorturl.core.impl;
 
 import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+import pl.mpakula.shorturl.core.UrlFacade;
 import pl.mpakula.shorturl.core.exception.InvalidUrlException;
 import pl.mpakula.shorturl.core.exception.OriginalUrlNotFoundException;
 

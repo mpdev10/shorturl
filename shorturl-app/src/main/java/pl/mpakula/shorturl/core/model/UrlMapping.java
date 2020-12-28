@@ -1,4 +1,4 @@
-package pl.mpakula.shorturl.core;
+package pl.mpakula.shorturl.core.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

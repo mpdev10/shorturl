@@ -1,9 +1,11 @@
-package pl.mpakula.shorturl.core;
+package pl.mpakula.shorturl.core.impl;
 
 import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.mpakula.shorturl.core.UrlFacade;
+import pl.mpakula.shorturl.core.ports.outgoing.UrlMappingRepository;
 
 @Configuration
 @ConfigurationPropertiesScan
