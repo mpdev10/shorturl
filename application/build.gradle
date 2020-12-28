@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation project(':shorturl-app')
+    implementation project(':core')
     implementation project(':repository-db-adapter')
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
