@@ -6,10 +6,8 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigInteger;
 
-@SuppressWarnings("JpaObjectClassSignatureInspection")
 @Entity
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
-@RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter

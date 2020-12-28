@@ -16,13 +16,12 @@ class UrlFacadeTest {
     private static final String VALID_NO_PREFIX_URL = "mpakula.pl";
     private static final String VALID_URL = "http://mpakula.pl";
     private static final String VALID_URL2 = "google.pl";
-    private static final UrlConfiguration configuration = new UrlConfiguration();
     private static final UrlValidator validator = UrlValidator.getInstance();
 
     @Test
     void shortenUrl_givenUrlIsNull_throwsInvalidUrlException() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         //when
         Executable action = () -> facade.shortenUrl(null);
         //then
@@ -32,7 +31,7 @@ class UrlFacadeTest {
     @Test
     void shortenUrl_givenUrlIsInvalid_throwsInvalidUrlException() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         //when
         Executable action = () -> facade.shortenUrl(INVALID_URL);
         //then
@@ -42,7 +41,7 @@ class UrlFacadeTest {
     @Test
     void shortenUrl_givenValidUrlHasNoPrefix_returnsValidNewUrl() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         //when
         String newUrl = facade.shortenUrl(VALID_NO_PREFIX_URL);
         boolean urlIsValid = validator.isValid(newUrl);
@@ -53,7 +52,7 @@ class UrlFacadeTest {
     @Test
     void shortenUrl_givenValidUrlWithPrefix_returnsValidNewUrl() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         //when
         String newUrl = facade.shortenUrl(VALID_URL);
         boolean urlIsValid = validator.isValid(newUrl);
@@ -64,7 +63,7 @@ class UrlFacadeTest {
     @Test
     void shortenUrl_givenValidUrlTwice_returnsSameUrl() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         //when
         String newUrl = facade.shortenUrl(VALID_URL);
         String otherUrl = facade.shortenUrl(VALID_URL);
@@ -75,7 +74,7 @@ class UrlFacadeTest {
     @Test
     void shortenUrl_givenTwoDistinctUrls_newUrlsAreDistinctToo() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         //when
         String newUrl = facade.shortenUrl(VALID_URL);
         String otherNewUrl = facade.shortenUrl(VALID_URL2);
@@ -86,7 +85,7 @@ class UrlFacadeTest {
     @Test
     void getOriginalUrl_givenNullOriginalUrl_throwsOriginalUrlNotFoundException() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         //when
         Executable action = () -> facade.getOriginalUrl(null);
         //then
@@ -96,7 +95,7 @@ class UrlFacadeTest {
     @Test
     void getOriginalUrl_givenInvalidOriginalUrl_throwsOriginalUrlNotFoundException() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         //when
         Executable action = () -> facade.getOriginalUrl(INVALID_URL);
         //then
@@ -106,7 +105,7 @@ class UrlFacadeTest {
     @Test
     void getOriginalUrl_givenNotExistingOriginalUrl_throwsOriginalUrlNotFoundException() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         //when
         Executable action = () -> facade.getOriginalUrl(VALID_URL);
         //then
@@ -116,13 +115,17 @@ class UrlFacadeTest {
     @Test
     void getOriginalUrl_givenValidUrl_originalUrlIsPresentAndValid() {
         //given
-        UrlFacade facade = configuration.urlFacade();
+        UrlFacade facade = urlFacade();
         String originalUrl = VALID_URL;
         //when
         String newUrl = facade.shortenUrl(originalUrl);
         String actualOriginalUrl = facade.getOriginalUrl(newUrl);
         //then
         assertThat(actualOriginalUrl).isEqualTo(originalUrl);
+    }
+
+    private static UrlFacade urlFacade() {
+        return new UrlFacadeImpl(UrlValidator.getInstance(), new UrlProps("http://127.0.0.1:8080/"), new InMemoryUrlMappingRepository());
     }
 
 }

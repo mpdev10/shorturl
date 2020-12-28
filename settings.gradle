@@ -1,4 +1,5 @@
 
 rootProject.name = 'shorturl'
 include 'shorturl-app'
+include 'repository-db-adapter'
 
