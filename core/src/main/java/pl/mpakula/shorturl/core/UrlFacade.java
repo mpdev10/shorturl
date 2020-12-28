@@ -3,6 +3,7 @@ package pl.mpakula.shorturl.core;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.UrlValidator;
+import org.jetbrains.annotations.NotNull;
 import pl.mpakula.shorturl.core.exception.InvalidUrlException;
 import pl.mpakula.shorturl.core.exception.OriginalUrlNotFoundException;
 import pl.mpakula.shorturl.core.model.UrlMapping;
@@ -20,6 +21,7 @@ public class UrlFacade implements OriginalUrlProvider, UrlShortener {
     private final String basePath;
     private final UrlMappingRepository urlMappingRepository;
 
+    @NotNull
     @Override
     public String shortenUrl(String url) {
         return Optional.ofNullable(url)
@@ -29,6 +31,7 @@ public class UrlFacade implements OriginalUrlProvider, UrlShortener {
                 .orElseThrow(InvalidUrlException::new);
     }
 
+    @NotNull
     @Override
     public String getOriginalUrl(String shortUrl) {
         return Optional.ofNullable(shortUrl)
