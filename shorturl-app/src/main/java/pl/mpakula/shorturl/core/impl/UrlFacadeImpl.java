@@ -16,7 +16,7 @@ import java.util.Optional;
 class UrlFacadeImpl implements UrlFacade {
 
     private final UrlValidator urlValidator;
-    private final UrlProps urlProps;
+    private final String basePath;
     private final UrlMappingRepository urlMappingRepository;
 
     @Override
@@ -31,7 +31,7 @@ class UrlFacadeImpl implements UrlFacade {
     @Override
     public String getOriginalUrl(String shortUrl) {
         return Optional.ofNullable(shortUrl)
-                .map(url -> url.replace(urlProps.getBasePath(), ""))
+                .map(url -> url.replace(basePath, ""))
                 .filter(StringUtils::isAlphanumeric)
                 .map(url -> new BigInteger(url, 36))
                 .flatMap(urlMappingRepository::findById)
@@ -60,7 +60,7 @@ class UrlFacadeImpl implements UrlFacade {
         return Optional.of(urlMapping)
                 .map(UrlMapping::getId)
                 .map(id -> id.toString(36))
-                .map(urlProps.getBasePath()::concat)
+                .map(basePath::concat)
                 .orElse("");
     }
 

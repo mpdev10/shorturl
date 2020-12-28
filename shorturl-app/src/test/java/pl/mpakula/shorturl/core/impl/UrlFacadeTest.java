@@ -125,7 +125,7 @@ class UrlFacadeTest {
     }
 
     private static UrlFacade urlFacade() {
-        return new UrlFacadeImpl(UrlValidator.getInstance(), new UrlProps("http://127.0.0.1:8080/"), new InMemoryUrlMappingRepository());
+        return new UrlFacadeImpl(UrlValidator.getInstance(), "http://127.0.0.1:8080/", new InMemoryUrlMappingRepository());
     }
 
 }
