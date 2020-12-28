@@ -1,9 +1,8 @@
-package pl.mpakula.shorturl.core.impl;
+package pl.mpakula.shorturl.core;
 
 import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
-import pl.mpakula.shorturl.core.UrlFacade;
 import pl.mpakula.shorturl.core.exception.InvalidUrlException;
 import pl.mpakula.shorturl.core.exception.OriginalUrlNotFoundException;
 
@@ -125,7 +124,7 @@ class UrlFacadeTest {
     }
 
     private static UrlFacade urlFacade() {
-        return new UrlFacadeImpl(UrlValidator.getInstance(), "http://127.0.0.1:8080/", new InMemoryUrlMappingRepository());
+        return new UrlFacade(UrlValidator.getInstance(), "http://127.0.0.1:8080/", new InMemoryUrlMappingRepository());
     }
 
 }

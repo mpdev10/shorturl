@@ -1,4 +1,4 @@
-package pl.mpakula.shorturl.core.impl;
+package pl.mpakula.shorturl.core;
 
 
 import com.google.common.collect.Maps;
