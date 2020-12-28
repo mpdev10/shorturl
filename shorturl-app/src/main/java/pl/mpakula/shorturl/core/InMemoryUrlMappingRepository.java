@@ -21,9 +21,9 @@ class InMemoryUrlMappingRepository implements UrlMappingRepository {
                         .map(i -> i.add(BigInteger.ONE))
                         .orElse(BigInteger.ZERO)
                 );
-        urlMapping.setId(id);
-        shortenedUrls.put(id, urlMapping);
-        return urlMapping;
+        UrlMapping savedMapping = new UrlMapping(id, urlMapping.getOriginalUrl());
+        shortenedUrls.put(id, savedMapping);
+        return savedMapping;
     }
 
     @Override

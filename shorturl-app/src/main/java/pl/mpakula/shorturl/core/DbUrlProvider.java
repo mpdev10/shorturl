@@ -18,7 +18,7 @@ class DbUrlProvider implements UrlProvider {
         return Optional.of(url)
                 .map(urlMappingRepository::findFirstByOriginalUrl)
                 .filter(Optional::isPresent)
-                .orElseGet(() -> Optional.of(new UrlMapping(url))
+                .orElseGet(() -> Optional.of(new UrlMapping(null, url))
                         .map(urlMappingRepository::save))
                 .map(this::computeShortenedUrl)
                 .orElseThrow(InvalidUrlException::new);

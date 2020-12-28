@@ -1,12 +1,11 @@
 package pl.mpakula.shorturl.core;
 
 import lombok.NonNull;
-import org.springframework.data.repository.Repository;
 
 import java.math.BigInteger;
 import java.util.Optional;
 
-interface UrlMappingRepository extends Repository<UrlMapping, String> {
+interface UrlMappingRepository {
 
     UrlMapping save(@NonNull UrlMapping urlMapping);
 
