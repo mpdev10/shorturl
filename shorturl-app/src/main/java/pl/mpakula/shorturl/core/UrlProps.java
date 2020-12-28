@@ -1,4 +1,4 @@
-package pl.mpakula.shorturl.domain;
+package pl.mpakula.shorturl.core;
 
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,10 +1,10 @@
-package pl.mpakula.shorturl.domain;
+package pl.mpakula.shorturl.core;
 
 import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
-import pl.mpakula.shorturl.domain.exception.InvalidUrlException;
-import pl.mpakula.shorturl.domain.exception.OriginalUrlNotFoundException;
+import pl.mpakula.shorturl.core.exception.InvalidUrlException;
+import pl.mpakula.shorturl.core.exception.OriginalUrlNotFoundException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
