@@ -1,15 +1,19 @@
+plugins {
+    id "org.springframework.boot" version "2.4.0"
+}
+
 dependencies {
-    implementation 'org.apache.commons:commons-text'
+    implementation project(':shorturl-app')
+    implementation project(':repository-db-adapter')
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'commons-validator:commons-validator'
-    implementation 'com.google.guava:guava'
 
     compileOnly 'org.projectlombok:lombok'
-    testCompileOnly 'org.projectlombok:lombok'
 
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
-    testImplementation 'org.assertj:assertj-core'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

@@ -2,6 +2,7 @@ package pl.mpakula.shorturl.infrastructure;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Repository;
 import pl.mpakula.shorturl.core.model.UrlMapping;
 import pl.mpakula.shorturl.core.ports.outgoing.UrlMappingRepository;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
+@EnableAutoConfiguration
 class UrlMappingRepositoryAdapter implements UrlMappingRepository {
 
     private final UrlMappingJpaRepository repository;

@@ -1,4 +1,4 @@
-package pl.mpakula.shorturl.application;
+package pl.mpakula.shorturl.application.endpoints;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.util.URLEncoder;
