@@ -1,4 +1,5 @@
 dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
     implementation 'org.apache.commons:commons-text'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'commons-validator:commons-validator'
