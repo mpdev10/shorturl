@@ -32,12 +32,11 @@ internal open class UrlMappingRepositoryAdapter
     }
 
     companion object {
-        @JvmStatic
+
         private fun toJpa(urlMapping: UrlMapping): UrlMappingJpa {
             return UrlMappingJpa(urlMapping.id, urlMapping.originalUrl)
         }
 
-        @JvmStatic
         private fun toDomain(urlMapping: UrlMappingJpa): UrlMapping {
             return UrlMapping(urlMapping.id, urlMapping.originalUrl)
         }
