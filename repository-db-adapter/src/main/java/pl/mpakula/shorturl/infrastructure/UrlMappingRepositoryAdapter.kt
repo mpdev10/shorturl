@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository
 import pl.mpakula.shorturl.core.model.UrlMapping
 import pl.mpakula.shorturl.core.ports.outgoing.UrlMappingRepository
 import java.math.BigInteger
-import java.util.*
 
 @Repository
 @EnableAutoConfiguration
@@ -21,16 +20,15 @@ internal open class UrlMappingRepositoryAdapter
             .let(::toDomain)
     }
 
-    override fun findFirstByOriginalUrl(originalUrl: String?): Optional<UrlMapping> {
-        val mapping = repository.findFirstByOriginalUrl(originalUrl)
+    override fun findFirstByOriginalUrl(originalUrl: String?): UrlMapping? {
+        return repository.findFirstByOriginalUrl(originalUrl)
             ?.let(::toDomain)
-        return Optional.ofNullable(mapping)
+
     }
 
-    override fun findById(id: BigInteger?): Optional<UrlMapping> {
-        val mapping = repository.findById(id)
+    override fun findById(id: BigInteger?): UrlMapping? {
+        return repository.findById(id)
             ?.let(::toDomain)
-        return Optional.ofNullable(mapping)
     }
 
     companion object {
