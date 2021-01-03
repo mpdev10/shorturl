@@ -30,14 +30,14 @@ class UrlMappingRepositoryAdapter implements UrlMappingRepository {
     @NotNull
     @Override
     public Optional<UrlMapping> findFirstByOriginalUrl(String originalUrl) {
-        return repository.findFirstByOriginalUrl(originalUrl)
+        return Optional.ofNullable(repository.findFirstByOriginalUrl(originalUrl))
                 .map(UrlMappingRepositoryAdapter::toDomain);
     }
 
     @NotNull
     @Override
     public Optional<UrlMapping> findById(BigInteger id) {
-        return repository.findById(id)
+        return Optional.ofNullable(repository.findById(id))
                 .map(UrlMappingRepositoryAdapter::toDomain);
     }
 
