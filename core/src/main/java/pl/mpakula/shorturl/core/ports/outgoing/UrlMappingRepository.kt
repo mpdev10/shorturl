@@ -6,6 +6,6 @@ import java.util.*
 
 interface UrlMappingRepository {
     fun save(urlMapping: UrlMapping): UrlMapping
-    fun findFirstByOriginalUrl(originalUrl: String?): Optional<UrlMapping?>
-    fun findById(id: BigInteger?): Optional<UrlMapping?>
+    fun findFirstByOriginalUrl(originalUrl: String?): Optional<UrlMapping>
+    fun findById(id: BigInteger?): Optional<UrlMapping>
 }
