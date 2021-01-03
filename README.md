@@ -1,2 +1,2 @@
 # shorturl
-Url shortening service in Java, Spring Boot + Thymeleaf
+Url shortening service in Kotlin, Spring Boot + Thymeleaf
